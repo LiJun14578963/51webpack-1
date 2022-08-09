@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -12,7 +12,6 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
   },
-  
   plugins: [
     new HtmlWebpackPlugin({
     title: 'XDML - 写代码啦',
@@ -28,7 +27,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
+          },
+          'css-loader',
+        ],
       },
     ],
   },
