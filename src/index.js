@@ -9,7 +9,7 @@ div.innerHTML = `
 ` */
 
 const button = document.createElement('button')
-button.innerText = '懒加载'
+button.innerText = '懒加载88'
 button.onclick = ()=>{
     const promise = import('./lazy')
     promise.then((module)=>{
