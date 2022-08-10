@@ -17,6 +17,18 @@ module.exports = {
 module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.styl$/,
+        loader: ["style-loader", "css-loader","stylus-loader"],
+      },
+      {
+        test: /\.less$/,
+        loader: ["style-loader", "css-loader","less-loader"],
+      },
+      {
         test: /\.scss$/i,
         use: [
           "style-loader",
@@ -24,7 +36,7 @@ module: {
           {
             loader: "sass-loader",
             options: {
-              implementation: require("dart-sass")
+              implementation: require('dart-sass')
             }
           }
         ],
